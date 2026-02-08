@@ -1,17 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdbwqgg1gu2hy"]
+[gd_scene load_steps=2 format=3 uid="uid://bdbwqgg1gu2hy"]
 
-[ext_resource type="PackedScene" uid="uid://duh7t2lm46lha" path="res://src/entity/player/player.tscn" id="1_eewff"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eewff"]
-size = Vector2(524, 281)
+[ext_resource type="PackedScene" uid="uid://c4pa8o5ocv1a" path="res://assets/maps/99-debug/level.tscn" id="1_eewff"]
 
 [node name="Main" type="Node"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(543, 554)
-shape = SubResource("RectangleShape2D_eewff")
-
-[node name="Player" parent="." instance=ExtResource("1_eewff")]
-position = Vector2(516, 327)
+[node name="Level" parent="." instance=ExtResource("1_eewff")]
