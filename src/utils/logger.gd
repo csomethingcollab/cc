@@ -26,20 +26,20 @@ func write(entry: Entry) -> void:
 	file.store_line(entry._to_string())
 	file.flush()
 	
-func trace(message: String) -> void:
-	write(Entry.new(name, message, Entry.Level.TRACE))
+func trace(message: Variant) -> void:
+	write(Entry.new(name, var_to_str(message), Entry.Level.TRACE))
 
-func debug(message: String) -> void:
-	write(Entry.new(name, message, Entry.Level.DEBUG))
+func debug(message: Variant) -> void:
+	write(Entry.new(name, var_to_str(message), Entry.Level.DEBUG))
 
-func info(message: String) -> void:
-	write(Entry.new(name, message, Entry.Level.INFO))
+func info(message: Variant) -> void:
+	write(Entry.new(name, var_to_str(message), Entry.Level.INFO))
 
-func warn(message: String) -> void:
-	write(Entry.new(name, message, Entry.Level.WARN))
+func warn(message: Variant) -> void:
+	write(Entry.new(name, var_to_str(message), Entry.Level.WARN))
 
-func error(message: String) -> void:
-	write(Entry.new(name, message, Entry.Level.ERROR))
+func error(message: Variant) -> void:
+	write(Entry.new(name, var_to_str(message), Entry.Level.ERROR))
 
 func _log_message(message: String, error: bool) -> void:
 	if (error):
