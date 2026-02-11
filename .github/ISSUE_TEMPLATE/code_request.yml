@@ -1,0 +1,30 @@
+name: Code Request
+description: Request or track a code change!
+title: "request[code]: "
+labels:
+  - code-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Note that each group only receives 3 code requests that can be fulfilled by Angel! Any other requests must be self-implemented!
+  - type: dropdown
+    attributes:
+      label: I am planning on implementing this myself
+      options: ['Yes', 'No']
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe your request
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Add any other details, screenshots or concept art about the code request here.
+
+        **Tip: You can attach images or files by clicking this area to highlight it and then dragging files in.**
+    validations:
+      required: false

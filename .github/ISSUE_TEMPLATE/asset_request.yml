@@ -1,0 +1,26 @@
+name: Asset Request
+description: Request or track an asset change!
+title: "request[asset]: "
+labels:
+  - asset-request
+body:
+  - type: dropdown
+    attributes:
+      label: I am planning on fulfilling this myself
+      options: ['Yes', 'No']
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe your request
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Add any other details, screenshots or concept art about the asset request here.
+
+        **Tip: You can attach images or files by clicking this area to highlight it and then dragging files in.**
+    validations:
+      required: false
