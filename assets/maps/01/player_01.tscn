@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dav1fqd6ybim7"]
+
+[ext_resource type="Script" uid="uid://vb58blg7y77h" path="res://assets/maps/01/player_01.gd" id="1_4wqxt"]
+[ext_resource type="Texture2D" uid="uid://bqujx3aww5s7n" path="res://assets/graphics/entity/player/gar_vie.png" id="2_6vsry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqjpq"]
+size = Vector2(46, 10)
+
+[node name="player01" type="CharacterBody2D"]
+script = ExtResource("1_4wqxt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.25, -70.75)
+scale = Vector2(0.32781458, 0.32781458)
+texture = ExtResource("2_6vsry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -0.75)
+shape = SubResource("RectangleShape2D_dqjpq")
