@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://2723cvm01yep"]
+
+[ext_resource type="PackedScene" uid="uid://dav1fqd6ybim7" path="res://assets/maps/01/player_01.tscn" id="1_ghu0v"]
+[ext_resource type="Texture2D" uid="uid://bk3lbjniaxxcf" path="res://assets/graphics/entity/player/garvroom.png" id="2_xx1d7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ghu0v"]
+a = Vector2(347.75, 119)
+b = Vector2(-302.25, 119)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xx1d7"]
+a = Vector2(188, 200)
+b = Vector2(146, 100)
+
+[node name="Main01" type="Node2D"]
+
+[node name="player01" parent="." instance=ExtResource("1_ghu0v")]
+position = Vector2(263, 147)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(448, -10)
+texture = ExtResource("2_xx1d7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Parallax2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
+position = Vector2(447.25, -19)
+shape = SubResource("SegmentShape2D_ghu0v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
+shape = SubResource("SegmentShape2D_xx1d7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
+shape = SubResource("SegmentShape2D_xx1d7")
