@@ -1,7 +1,7 @@
 class_name Scenetrigger extends Area2D
 
 @export var connect_scene: String
-var scene_folder = "res://"
+var scene_folder = "res://assets/maps/04/"
 
 
 
