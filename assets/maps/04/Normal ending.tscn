@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://cu0uqdapncjh8"]
+[gd_scene load_steps=5 format=3 uid="uid://cu0uqdapncjh8"]
+
+[ext_resource type="PackedScene" uid="uid://duh7t2lm46lha" path="res://src/entity/player/player.tscn" id="1_ntkfx"]
+[ext_resource type="Script" uid="uid://ecl4xt4rhfw8" path="res://src/entity/player/playerL4.gd" id="2_2ggvf"]
+[ext_resource type="Texture2D" uid="uid://bfce3ciq72adl" path="res://assets/maps/04/images.png" id="4_ax5jd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag3q0"]
+size = Vector2(56, 54)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ntkfx")]
+position = Vector2(181, 344)
+script = ExtResource("2_2ggvf")
+is_final = false
+
+[node name="trigger1" type="Area2D" parent="."]
+position = Vector2(1119, 331)
+metadata/_edit_group_ = true
+
+[node name="Images" type="Sprite2D" parent="trigger1"]
+scale = Vector2(0.41603053, 0.3970588)
+texture = ExtResource("4_ax5jd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger1"]
+shape = SubResource("RectangleShape2D_ag3q0")
+
+[connection signal="body_entered" from="trigger1" to="trigger1" method="_on_body_entered"]
