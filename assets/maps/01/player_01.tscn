@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqujx3aww5s7n" path="res://assets/graphics/entity/player/gar_vie.png" id="2_6vsry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqjpq"]
-size = Vector2(46, 10)
+size = Vector2(50, 10)
 
 [node name="player01" type="CharacterBody2D"]
 script = ExtResource("1_4wqxt")
@@ -15,5 +15,5 @@ scale = Vector2(0.32781458, 0.32781458)
 texture = ExtResource("2_6vsry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.25, -0.75)
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_dqjpq")

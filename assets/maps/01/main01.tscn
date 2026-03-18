@@ -8,7 +8,7 @@ a = Vector2(347.75, 119)
 b = Vector2(-302.25, 119)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xx1d7"]
-a = Vector2(188, 200)
+a = Vector2(186, 199)
 b = Vector2(146, 100)
 
 [node name="Main01" type="Node2D"]
@@ -20,10 +20,11 @@ position = Vector2(263, 147)
 z_index = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(448, -10)
+position = Vector2(452, -9)
 texture = ExtResource("2_xx1d7")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Parallax2D"]
+position = Vector2(5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
 position = Vector2(447.25, -19)
@@ -34,3 +35,5 @@ shape = SubResource("SegmentShape2D_xx1d7")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
 shape = SubResource("SegmentShape2D_xx1d7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Parallax2D/StaticBody2D"]
