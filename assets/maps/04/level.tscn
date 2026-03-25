@@ -42,7 +42,9 @@ texture = ExtResource("2_dkq7v")
 shape = SubResource("RectangleShape2D_o5ykr")
 
 [node name="Portal #1" type="Area2D" parent="."]
-position = Vector2(406, 221)
+position = Vector2(1108, 44)
+script = ExtResource("1_566e5")
+connect_scene = "room_1"
 metadata/_edit_group_ = true
 
 [node name="Portal" type="Sprite2D" parent="Portal #1"]
@@ -59,5 +61,86 @@ position = Vector2(344, 348)
 script = ExtResource("4_dkq7v")
 is_final = false
 
+[node name="Portal #2" type="Area2D" parent="."]
+position = Vector2(590, 458)
+script = ExtResource("1_566e5")
+connect_scene = "room_2"
+metadata/_edit_group_ = true
+
+[node name="Portal" type="Sprite2D" parent="Portal #2"]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.30859375, 0.3046875)
+texture = ExtResource("3_o5ykr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal #2"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ej7c")
+
+[node name="Portal #3" type="Area2D" parent="."]
+position = Vector2(579, 132)
+script = ExtResource("1_566e5")
+connect_scene = "room_3"
+metadata/_edit_group_ = true
+
+[node name="Portal" type="Sprite2D" parent="Portal #3"]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.30859375, 0.3046875)
+texture = ExtResource("3_o5ykr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal #3"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ej7c")
+
+[node name="Portal #4" type="Area2D" parent="."]
+position = Vector2(1114, 605)
+script = ExtResource("1_566e5")
+connect_scene = "room_4"
+metadata/_edit_group_ = true
+
+[node name="Portal" type="Sprite2D" parent="Portal #4"]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.30859375, 0.3046875)
+texture = ExtResource("3_o5ykr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal #4"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ej7c")
+
+[node name="Portal #5" type="Area2D" parent="."]
+position = Vector2(40, 604)
+script = ExtResource("1_566e5")
+connect_scene = "room_5"
+metadata/_edit_group_ = true
+
+[node name="Portal" type="Sprite2D" parent="Portal #5"]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.30859375, 0.3046875)
+texture = ExtResource("3_o5ykr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal #5"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ej7c")
+
+[node name="Portal #6" type="Area2D" parent="."]
+position = Vector2(41, 45)
+script = ExtResource("1_566e5")
+connect_scene = "room_6"
+metadata/_edit_group_ = true
+
+[node name="Portal" type="Sprite2D" parent="Portal #6"]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.30859375, 0.3046875)
+texture = ExtResource("3_o5ykr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal #6"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_1ej7c")
+
 [connection signal="body_entered" from="trigger1" to="trigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="trigger2" to="trigger2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #1" to="Portal #1" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #2" to="Portal #2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #3" to="Portal #3" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #4" to="Portal #4" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #5" to="Portal #5" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal #6" to="Portal #6" method="_on_body_entered"]

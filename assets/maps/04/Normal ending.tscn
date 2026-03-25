@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu0uqdapncjh8"]
+[gd_scene load_steps=6 format=3 uid="uid://cu0uqdapncjh8"]
 
 [ext_resource type="PackedScene" uid="uid://duh7t2lm46lha" path="res://src/entity/player/player.tscn" id="1_ntkfx"]
 [ext_resource type="Script" uid="uid://ecl4xt4rhfw8" path="res://src/entity/player/playerL4.gd" id="2_2ggvf"]
 [ext_resource type="Texture2D" uid="uid://bfce3ciq72adl" path="res://assets/maps/04/images.png" id="4_ax5jd"]
+[ext_resource type="Script" uid="uid://c4phnx4t885w5" path="res://assets/maps/04/button.gd" id="4_ntkfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag3q0"]
 size = Vector2(56, 54)
@@ -25,4 +26,14 @@ texture = ExtResource("4_ax5jd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trigger1"]
 shape = SubResource("RectangleShape2D_ag3q0")
 
+[node name="Button" type="Button" parent="."]
+offset_left = 87.0
+offset_top = 37.0
+offset_right = 343.0
+offset_bottom = 82.0
+text = "Click to head back to Main Maze"
+script = ExtResource("4_ntkfx")
+connect_scene = "level"
+
 [connection signal="body_entered" from="trigger1" to="trigger1" method="_on_body_entered"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
