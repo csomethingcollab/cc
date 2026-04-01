@@ -17,3 +17,9 @@ shape = SubResource("RectangleShape2D_ynrr6")
 position = Vector2(5.0000005, -22)
 scale = Vector2(3, 3)
 texture = ExtResource("1_qf6hm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
