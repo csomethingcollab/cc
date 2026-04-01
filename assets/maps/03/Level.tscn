@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://6rd2wq87qq4"]
+[gd_scene load_steps=6 format=4 uid="uid://ccgi0454u45vn"]
 
 [ext_resource type="Texture2D" uid="uid://bj3ncsuumaiv3" path="res://assets/graphics/tilesets/IsoTiles/Tiles/basetiles.png" id="1_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://b50v8xc1amada" path="res://assets/maps/03/six.tscn" id="2_8rbpu"]
