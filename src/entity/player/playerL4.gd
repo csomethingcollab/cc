@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		position.x = b
 	if position.y < b and not is_final:
 		position.y = b
-	if position.y > 624 and not is_final:
-		position.y = 624
-	if position.x > 1124:
-		position.x = 1124
+	if position.y > 3000 and not is_final:
+		position.y = 3000
+	if position.x > 3000:
+		position.x = 3000
