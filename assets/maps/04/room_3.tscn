@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch1g3ksgtgxhh"]
+[gd_scene load_steps=6 format=3 uid="uid://ch1g3ksgtgxhh"]
 
 [ext_resource type="PackedScene" uid="uid://duh7t2lm46lha" path="res://src/entity/player/player.tscn" id="1_ant3f"]
 [ext_resource type="Script" uid="uid://ecl4xt4rhfw8" path="res://src/entity/player/playerL4.gd" id="2_ao8pj"]
 [ext_resource type="Script" uid="uid://c4phnx4t885w5" path="res://assets/maps/04/button.gd" id="3_ao8pj"]
+[ext_resource type="Script" uid="uid://prvqcpwc836g" path="res://assets/maps/04/Key.gd" id="4_c18l4"]
+[ext_resource type="Texture2D" uid="uid://um74kfdm76pw" path="res://assets/maps/04/Triangle Key.png" id="5_4tq42"]
 
 [node name="Room 3" type="Node2D"]
 
@@ -27,4 +29,17 @@ text = "Click to head back to Main Maze"
 script = ExtResource("3_ao8pj")
 connect_scene = "level"
 
+[node name="Key" type="Area2D" parent="."]
+position = Vector2(778, 313)
+script = ExtResource("4_c18l4")
+item_id = "Key3"
+metadata/_edit_group_ = true
+
+[node name="TriangleKey" type="Sprite2D" parent="Key"]
+texture = ExtResource("5_4tq42")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key"]
+polygon = PackedVector2Array(12, -10, 0, -27, -11, -10, -9, 30, 12, 30)
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

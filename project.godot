@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Controls="*uid://bsiv8sy1qohv1"
+GameState="*res://assets/maps/04/GameState.gd"
 
 [debug]
 
