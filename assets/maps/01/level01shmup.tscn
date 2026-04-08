@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://715w67xqjmty"]
+[gd_scene load_steps=6 format=3 uid="uid://715w67xqjmty"]
 
 [ext_resource type="Script" uid="uid://nykqfnm58ypp" path="res://assets/maps/01/Scripts/game.gd" id="1_aq6hw"]
 [ext_resource type="PackedScene" uid="uid://duj85byeoie6u" path="res://assets/maps/01/player.tscn" id="1_h2i2y"]
 [ext_resource type="PackedScene" uid="uid://emoy0fw1y0dq" path="res://assets/maps/01/enemy.tscn" id="3_aq6hw"]
+[ext_resource type="PackedScene" uid="uid://chx8ibfu7ul7j" path="res://assets/maps/01/bullet.tscn" id="4_4tftu"]
+[ext_resource type="Script" uid="uid://dot3vb6t5dw71" path="res://assets/maps/01/Scripts/states.gd" id="5_j8jrp"]
 
 [node name="Level01Shmup" type="Node"]
 script = ExtResource("1_aq6hw")
 
+[node name="Enemy" parent="." instance=ExtResource("3_aq6hw")]
+position = Vector2(62, -158)
+
 [node name="Player" parent="." instance=ExtResource("1_h2i2y")]
+position = Vector2(0, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, -175)
 zoom = Vector2(1.2, 1.2)
 
-[node name="Enemy" parent="." instance=ExtResource("3_aq6hw")]
-position = Vector2(15, -386)
+[node name="Bullet" parent="." instance=ExtResource("4_4tftu")]
+position = Vector2(9, -109)
+
+[node name="States???" type="Node" parent="."]
+script = ExtResource("5_j8jrp")

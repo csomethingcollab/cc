@@ -1,7 +1,23 @@
-extends Node2D
+extends Area2D
+# gonna preface that this code was NOT made by me and i don't claim it to be.
+# this code is by Eleeza Amin on youtube's bullet hell devlog!!
+var speed = 100
+var direction = Vector2.RIGHT
+@export var texture: Texture2D
+@export var hitbox: CircleShape2D = load("res://assets/maps/01/Sprites/bullet_hitbox.tres")
 
-func _process(delta):
-	self.position += Vector2(1,0).rotated(self.rotation)
+func _ready() -> void:
+	$CollisionShape2d.shape = hitbox
+	$Sprite2D.texture = texture
+
+func _physics_process(delta: float) -> void:
+	position += speed * direction * delta
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	queue_free()
 	
-	if ($RayCast2d.is_colliding()):
-		print("ow")
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		PlayerStat.hp -= 10
+		print(PlayerStat.hp)
+		queue_free()
