@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dyl4gm01spri0"]
+[gd_scene load_steps=14 format=4 uid="uid://dyl4gm01spri0"]
 
 [ext_resource type="Script" uid="uid://cp7mym34chari" path="res://assets/maps/04/trigger.gd" id="1_566e5"]
 [ext_resource type="Texture2D" uid="uid://bfce3ciq72adl" path="res://assets/maps/04/images.png" id="2_dkq7v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ibu88edduyjl" path="res://assets/maps/04/portal_trigger.gd" id="5_1ej7c"]
 [ext_resource type="Texture2D" uid="uid://bjr3cnuwlqlcw" path="res://assets/maps/04/placeholdertiles.png" id="6_o5ykr"]
 [ext_resource type="PackedScene" uid="uid://unmg5iymygoe" path="res://assets/maps/04/inventory.tscn" id="8_hi2ol"]
+[ext_resource type="Script" uid="uid://bnse55bfupp5m" path="res://assets/maps/04/Canvas_Layer.gd" id="8_p1t6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5ykr"]
 size = Vector2(56, 54)
@@ -156,6 +157,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = SubResource("TileSet_cpmi5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_p1t6k")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("8_hi2ol")]
 anchors_preset = 8
