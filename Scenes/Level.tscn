@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://6rd2wq87qq4"]
 
-[ext_resource type="Texture2D" uid="uid://bj3ncsuumaiv3" path="res://assets/graphics/tilesets/IsoTiles/Tiles/basetiles.png" id="1_vsvp5"]
+[ext_resource type="Texture2D" uid="uid://bj3ncsuumaiv3" path="res://assets/maps/03/IsoTiles/Tiles/basetiles.png" id="1_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://b50v8xc1amada" path="res://Scenes/six.tscn" id="2_8rbpu"]
-[ext_resource type="Script" uid="uid://b4w5lta8e3ov8" path="res://assets/graphics/tilesets/IsoTiles/tile_map_layer.gd" id="2_fuudy"]
+[ext_resource type="Script" uid="uid://b4w5lta8e3ov8" path="res://Scenes/tile_map_layer.gd" id="2_fuudy"]
 [ext_resource type="Script" uid="uid://cmemyr4y4pgby" path="res://Scenes/camera_2.gd" id="4_fuudy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuudy"]
@@ -1284,7 +1284,7 @@ texture = ExtResource("1_vsvp5")
 
 [sub_resource type="TileSet" id="TileSet_xylue"]
 tile_shape = 1
-tile_size = Vector2i(256, 145)
+tile_size = Vector2i(232, 145)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fuudy")
 

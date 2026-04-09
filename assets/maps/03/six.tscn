@@ -8,7 +8,7 @@
 radius = 28.857435
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdi7f"]
-atlas = ExtResource("2_pftgq")
+atlas = ExtResource("2_ftgq")
 region = Rect2(0, 0, 460, 460)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iy5j4"]

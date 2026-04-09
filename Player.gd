@@ -13,7 +13,11 @@ var last_diagonal := Vector2.ZERO
 var diagonal_release_timer := 0.0
 var diagonal_grace := 0.05
 
+const speed := 800
+const isometric_ratio := (232.0 / 145.0)
+
 func _physics_process(delta: float) -> void:
+	ani.flip_h = false       # reset this, we set it to true during the movement processes
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if direction.x != 0 and direction.y != 0:
@@ -30,71 +34,29 @@ func _physics_process(delta: float) -> void:
 
 	if state != "attacking" and state != "tracking":
 		if direction != Vector2.ZERO:
-			velocity = direction * 800.0
-			if direction == Vector2(0.0, 1.0):
-				ani.flip_h = false
-				ani.play("Walk")
-				lastFacing = "down"
-			elif direction == Vector2(0.0, -1.0):
-				ani.flip_h = false
-				ani.play("WalkUp")
-				lastFacing = "up"
-			elif direction == Vector2(-1.0, 0.0):
-				ani.flip_h = false
-				ani.play("WalkLeft")
-				lastFacing = "left"
-			elif direction == Vector2(1.0, 0.0):
+			velocity = direction * speed
+			velocity.x *= isometric_ratio
+			
+			if (velocity.x > 0):
 				ani.flip_h = true
-				ani.play("WalkLeft")
-				lastFacing = "right"
-			elif direction.is_equal_approx(Vector2(0.707107, -0.707107)):
-				ani.flip_h = true
-				ani.play("WalkLeftUp")
-				lastFacing = "upRight"
-			elif direction.is_equal_approx(Vector2(0.707107, 0.707107)):
-				ani.flip_h = true
-				ani.play("WalkLeftDown")
-				lastFacing = "downRight"
-			elif direction.is_equal_approx(Vector2(-0.707107, -0.707107)):
-				ani.flip_h = false
-				ani.play("WalkLeftUp")
-				lastFacing = "upLeft"
-			elif direction.is_equal_approx(Vector2(-0.707107, 0.707107)):
-				ani.flip_h = false
-				ani.play("WalkLeftDown")
-				lastFacing = "downLeft"
-
+			var movement_directions: Array[Array] = [
+				["upLeft", "up", "upRight"],
+				["left", null, "right"],
+				["downLeft", "down", "downRight"]
+			]
+			lastFacing = movement_directions[sign(direction.y) + 1][sign(direction.x) + 1]
+			ani.play("Walk" + lastFacing.replacen("Right", "Left").to_pascal_case())
+			
 		else:
 			velocity = Vector2.ZERO
 
-			if lastFacing == "down":
-				ani.flip_h = false
-				ani.play("Idle")
-			elif lastFacing == "up":
-				ani.flip_h = false
-				ani.play("IdleUp")
-			elif lastFacing == "left":
-				ani.flip_h = false
-				ani.play("IdleLeft")
-			elif lastFacing == "right":
+			if lastFacing.containsn("Right"):
 				ani.flip_h = true
-				ani.play("IdleLeft")
-			elif lastFacing == "upRight":
-				ani.flip_h = true
-				ani.play("IdleLeftUp")
-			elif lastFacing == "downRight":
-				ani.flip_h = true
-				ani.play("IdleLeftDown")
-			elif lastFacing == "upLeft":
-				ani.flip_h = false
-				ani.play("IdleLeftUp")
-			elif lastFacing == "downLeft":
-				ani.flip_h = false
-				ani.play("IdleLeftDown")
+			ani.play("Idle" + lastFacing.replacen("Right", "Left").to_pascal_case())
 
-	move_and_slide()
+		move_and_slide()
 
-	if state != "attacking":
+	elif state != "attacking":
 		if Input.is_action_just_pressed("basicAttack"):
 			basicAttack()
 		elif Input.is_action_just_pressed("secondAttack"):
@@ -104,59 +66,17 @@ func basicAttack():
 	velocity = Vector2.ZERO
 	state = "attacking"
 	_8_frame_timer.start()
-	if lastFacing == "down":
-		ani.flip_h = false
-		ani.play("Prime")
-	elif lastFacing == "up":
-		ani.flip_h = false
-		ani.play("PrimeUp")
-	elif lastFacing == "left":
-		ani.flip_h = false
-		ani.play("PrimeLeft")
-	elif lastFacing == "right":
+	if lastFacing.containsn("Right"):
 		ani.flip_h = true
-		ani.play("PrimeLeft")
-	elif lastFacing == "upRight":
-		ani.flip_h = true
-		ani.play("PrimeLeftUp")
-	elif lastFacing == "downRight":
-		ani.flip_h = true
-		ani.play("PrimeLeftDown")
-	elif lastFacing == "upLeft":
-		ani.flip_h = false
-		ani.play("PrimeLeftUp")
-	elif lastFacing == "downLeft":
-		ani.flip_h = false
-		ani.play("PrimeLeftDown")
+	ani.play("Prime" + lastFacing.replacen("Right", "Left").to_pascal_case())
 
 func secondAttack():
 	velocity = Vector2.ZERO
 	state = "attacking"
 	_8_frame_timer.start()
-	if lastFacing == "down":
-		ani.flip_h = false
-		ani.play("Sec")
-	elif lastFacing == "up":
-		ani.flip_h = false
-		ani.play("SecUp")
-	elif lastFacing == "left":
-		ani.flip_h = false
-		ani.play("SecLeft")
-	elif lastFacing == "right":
+	if lastFacing.containsn("Right"):
 		ani.flip_h = true
-		ani.play("SecLeft")
-	elif lastFacing == "upRight":
-		ani.flip_h = true
-		ani.play("SecLeftUp")
-	elif lastFacing == "downRight":
-		ani.flip_h = true
-		ani.play("SecLeftDown")
-	elif lastFacing == "upLeft":
-		ani.flip_h = false
-		ani.play("SeceLeftUp")
-	elif lastFacing == "downLeft":
-		ani.flip_h = false
-		ani.play("SecLeftDown")
+	ani.play("Sec" + lastFacing.replacen("Right", "Left").to_pascal_case())
 	var projectile = PROJECTILE.instantiate()
 	projectile.six = self
 	get_parent().add_child(projectile)
