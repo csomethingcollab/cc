@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://duj85byeoie6u"]
+
+[ext_resource type="Script" uid="uid://crpt75f4ueagd" path="res://assets/maps/01/Scripts/player.gd" id="1_ame5d"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ps0mv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ame5d"]
+radius = 33.22273
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(0.55, 0.55)
+script = ExtResource("1_ame5d")
+playerSpeed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.31249997, 0.3125)
+texture = ExtResource("1_ps0mv")
+
+[node name="ShootArea" type="Node2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.55, 0.55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.55, 0.55)
+shape = SubResource("CircleShape2D_ame5d")
