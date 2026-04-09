@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dugkjlea0q2vl"]
+
+[ext_resource type="Texture2D" uid="uid://cmctfpmqrpm3j" path="res://assets/graphics/entity/weapons/OIP-removebg-preview.png" id="1_f8cdk"]
+[ext_resource type="Script" uid="uid://bcy6kfouqm5jw" path="res://assets/maps/03/projectile.gd" id="1_yr2qt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr2qt"]
+atlas = ExtResource("1_f8cdk")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl4hk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr2qt")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4467"]
+radius = 96.81965
+
+[node name="projectile" type="Area2D"]
+z_index = 3
+scale = Vector2(0.3553522, 0.3553522)
+script = ExtResource("1_yr2qt")
+speed = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7468575, 0.7468575)
+sprite_frames = SubResource("SpriteFrames_tl4hk")
+animation = &"Static"
+autoplay = "Static"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d4467")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]
