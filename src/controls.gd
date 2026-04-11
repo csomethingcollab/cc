@@ -1,9 +1,9 @@
 extends Node
 
-var X
-var Y
-var JUMP
-var SPECIAL
+var X : float
+var Y : float
+var JUMP : bool
+var SPECIAL : bool
 
 var logger
 

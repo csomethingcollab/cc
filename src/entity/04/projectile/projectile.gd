@@ -12,21 +12,7 @@ func _ready() -> void:
 	lifespan.start()
 
 func _process(delta: float) -> void:
-	var direction := Vector2.ZERO
-
-	# Input handling (supports arrow keys and WASD)
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-
-	# Normalize to prevent faster diagonal movement
-	if direction != Vector2.ZERO:
-		direction = direction.normalized()
+	var direction := Vector2(Controls.X, Controls.Y).normalized()
 
 	# Move the Area2D
 	position += direction * speed * delta

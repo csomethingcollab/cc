@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dugkjlea0q2vl"]
 
 [ext_resource type="Texture2D" uid="uid://cmctfpmqrpm3j" path="res://assets/graphics/entity/weapons/OIP-removebg-preview.png" id="1_f8cdk"]
-[ext_resource type="Script" uid="uid://bcy6kfouqm5jw" path="res://assets/maps/03/projectile.gd" id="1_yr2qt"]
+[ext_resource type="Script" uid="uid://bcy6kfouqm5jw" path="res://src/entity/04/projectile/projectile.gd" id="1_yr2qt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yr2qt"]
 atlas = ExtResource("1_f8cdk")

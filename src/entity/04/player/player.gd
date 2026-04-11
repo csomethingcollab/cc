@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var ani: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _8_frame_timer: Timer = $"Timers/8frameTimer"
-const PROJECTILE = preload("res://assets/maps/03/projectile.tscn")
+const PROJECTILE = preload("res://src/entity/04/projectile/projectile.tscn")
 @onready var camera1: Camera2D = $Camera1
 @onready var camera2: Camera2D = $"../Camera2"
 
@@ -18,12 +18,11 @@ const isometric_ratio := (232.0 / 145.0)
 
 func _physics_process(delta: float) -> void:
 	ani.flip_h = false       # reset this, we set it to true during the movement processes
-	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction := Vector2(Controls.X, Controls.Y).normalized()
 
-	if direction.x != 0 and direction.y != 0:
+	if direction.x != 0 and direction.y != 0:           # in a diagonal direction
 		last_diagonal = direction
 		diagonal_release_timer = 0.0
-
 	elif last_diagonal != Vector2.ZERO and direction != Vector2.ZERO:
 		diagonal_release_timer += delta
 
@@ -56,16 +55,18 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 
-	elif state != "attacking":
-		if Input.is_action_just_pressed("basicAttack"):
+	if state != "attacking":
+		if Input.is_action_just_pressed("special"):
 			basicAttack()
 		elif Input.is_action_just_pressed("secondAttack"):
 			secondAttack()
 
 func basicAttack():
+	print("attacking")
 	velocity = Vector2.ZERO
 	state = "attacking"
 	_8_frame_timer.start()
+	
 	if lastFacing.containsn("Right"):
 		ani.flip_h = true
 	ani.play("Prime" + lastFacing.replacen("Right", "Left").to_pascal_case())
@@ -87,6 +88,8 @@ func _on_frame_timer_timeout() -> void:
 		state = "null"
 
 func swap_camera() -> void:
+	# TODO: I feel like a better way to do this would be to reparent a singular camera under the player/projectile,
+	# instead of enabling and disabling two different ones.
 	if get_viewport().get_camera_2d() == camera1:
 		camera2.make_current()
 	else:
