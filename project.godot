@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 Controls="*uid://bsiv8sy1qohv1"
 GameState="*res://assets/maps/04/GameState.gd"
+GlobalPosition="*res://assets/maps/04/globalposition.gd"
 
 [debug]
 
