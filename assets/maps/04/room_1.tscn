@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2t0n4xmb8pug"]
+[gd_scene load_steps=7 format=3 uid="uid://b2t0n4xmb8pug"]
 
 [ext_resource type="PackedScene" uid="uid://duh7t2lm46lha" path="res://src/entity/player/player.tscn" id="1_vavf1"]
 [ext_resource type="Script" uid="uid://ecl4xt4rhfw8" path="res://src/entity/player/playerL4.gd" id="2_avsi0"]
 [ext_resource type="Script" uid="uid://c4phnx4t885w5" path="res://assets/maps/04/button.gd" id="3_avsi0"]
 [ext_resource type="Script" uid="uid://prvqcpwc836g" path="res://assets/maps/04/Key.gd" id="4_6m6by"]
 [ext_resource type="Texture2D" uid="uid://um74kfdm76pw" path="res://assets/maps/04/Triangle Key.png" id="5_tfgpc"]
+[ext_resource type="PackedScene" uid="uid://ymsw6qcqjay2" path="res://assets/maps/04/Collectables/Clue1 .tscn" id="6_tfgpc"]
 
 [node name="Room 1" type="Node2D"]
 
@@ -40,6 +41,9 @@ texture = ExtResource("5_tfgpc")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key"]
 polygon = PackedVector2Array(12, -10, 0, -27, -11, -10, -9, 30, 12, 30)
+
+[node name="Clue1" parent="." instance=ExtResource("6_tfgpc")]
+position = Vector2(912, 390)
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
